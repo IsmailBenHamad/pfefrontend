@@ -1,0 +1,23 @@
+<div class="dashboard">
+    <div class="sidebar">
+      <div class="logo">
+        <!-- Your logo or dashboard title here -->
+        Dashboard
+      </div>
+      <ul>
+        <li><a [routerLink]="['/etudiant']" routerLinkActive="active-link">Liste Etudiant</a></li>
+        <li><a [routerLink]="['/listeformation']" routerLinkActive="active-link">Liste Formation</a></li>
+        <li><a [routerLink]="['/formateur']" routerLinkActive="active-link">Liste Formateur</a></li>
+        <li><a [routerLink]="['/listecategorie']" routerLinkActive="active-link">Liste Categorie</a></li>
+        <li><a [routerLink]="['/emploi']" routerLinkActive="active-link">Emploi Du Temps</a></li>
+        <li><a [routerLink]="['/module']" routerLinkActive="active-link">Modules</a></li>
+
+
+        <!-- More sidebar items -->
+      </ul>
+    </div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

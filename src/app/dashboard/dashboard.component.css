@@ -1,0 +1,26 @@
+/* dashboard.component.scss */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Assuming your sidebar is within <app-sidebar> and has a fixed width of 250px */
+app-sidebar {
+  width: 250px; /* Width of the sidebar */
+  flex-shrink: 0; /* Prevents the sidebar from shrinking */
+}
+
+.main-content {
+  flex-grow: 1; /* Allows the main content to fill the remaining space */
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  width: calc(100% - 250px); /* Adjusts width considering the sidebar */
+}
+
+/* You might want to remove centering if not needed, if you do keep it, ensure content is aligned properly */
+.main-content > * {
+  max-width: 90%;
+  width: 100%;
+}
