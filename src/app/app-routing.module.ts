@@ -22,6 +22,7 @@ import { ListeCategorieComponent } from './dashboard/liste-categorie/liste-categ
 import { EmploiComponent } from './dashboard/emploi/emploi.component';
 import { CompteComponent } from './compte/compte.component';
 import { ModuleComponent } from './dashboard/module/module.component';
+import { LoggedInGuard } from './logged-in.guard';
 
 
 const routes: Routes = [
@@ -31,19 +32,15 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'testimonial', component: TestimonialComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard] }, // Apply LoggedInGuard here
   { path: 'compte', component: CompteComponent },
   { path: 'modules', component: ModulesComponent },
   { path: 'formation', component: FormationComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'etudiant', component: EtudiantComponent },
-  { path: 'formateur', component: FormateurComponent },
-  { path: 'listeformation', component: ListeFormationComponent },
-  { path: 'categorie', component: CategorieComponent },
-  { path: 'listecategorie', component: ListeCategorieComponent },
-  { path: 'emploi', component: EmploiComponent },
-  { path: 'module', component: ModuleComponent }
-
+  { 
+    path: 'dashboard', 
+    component: DashboardComponent,
+    canActivate: [AuthGuard] // Apply the AuthGuard here
+  }  
 
 ];
 

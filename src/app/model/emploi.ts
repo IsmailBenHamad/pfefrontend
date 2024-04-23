@@ -9,7 +9,7 @@ export interface Emploi {
   _id?: string;
   nom: string;
   lundi: PlageHoraire[];
-  mardi: PlageHoraire[];
+  mardi: PlageHoraire[];  
   mercredi: PlageHoraire[];
   jeudi: PlageHoraire[];
   vendredi: PlageHoraire[];

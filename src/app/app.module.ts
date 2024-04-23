@@ -58,6 +58,7 @@ import { AddStudentModuleComponent } from './dashboard/module/edit/add-student-m
 import { EmploiDetailsModalComponent } from './dashboard/module/emploi-details-modal/emploi-details-modal.component';
 import { AddModuleComponent } from './dashboard/module/edit/add-module/add-module.component';
 import { UpdateModuleComponent } from './dashboard/module/edit/update-module/update-module.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 
@@ -70,44 +71,17 @@ import { UpdateModuleComponent } from './dashboard/module/edit/update-module/upd
     AboutComponent,
     NavbarComponent,
     FooterComponent,
-   
     ContactComponent,
     Er404Component,
     TestimonialComponent,
     TeamComponent,
     LoginComponent,
-
     LogoutComponent,
-    ModulesComponent,
-    FormationComponent,
-    EtudiantComponent,
-    EnseignantComponent,
-    CategorieComponent,
-    EmploiComponent,
-    CompteComponent,
-    DashboardComponent,
-    SidebarComponent,
-    FormateurComponent,
-    AddStudentComponent,
-    UpdateStudentComponent,
-    ListeFormationComponent,
-    AddFormationComponent,
-    UpdateFormationComponent,
-    ListeCategorieComponent,
-    AddcategorieComponent,
-    UpdateCategorieComponent,
-    AddemploiComponent,
-    UpdateEmploiComponent,
-    RegisterAccountComponent,
-    ModuleComponent,
-    EtudiantModuleComponent,
-    AddStudentModuleComponent,
-    EmploiDetailsModalComponent,
-    AddModuleComponent,
-    UpdateModuleComponent,
+    ModulesComponent    
   ],
   imports: [
     BrowserModule,
+    DashboardModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,

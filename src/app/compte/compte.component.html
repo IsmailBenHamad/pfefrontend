@@ -1,6 +1,6 @@
 <div *ngIf="compte">
     <h2>Informations du Compte</h2>
-    <p><strong>Nom d'utilisateur:</strong> {{ compte.nomUtilisateur }}</p>
+    <p><strong>Nom d'utilisateur:</strong> {{ compte?.nomUtilisateur }}</p>
     <p><strong>Rôle:</strong> {{ compte.role }}</p>
     <p><strong>Status:</strong> <span [ngClass]="{'active': compte.estActive, 'inactive': !compte.estActive}">{{ compte.estActive ? 'Actif' : 'Inactif' }}</span></p>
   </div>
