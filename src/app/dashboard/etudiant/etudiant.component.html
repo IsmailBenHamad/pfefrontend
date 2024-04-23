@@ -4,7 +4,7 @@
   <button class="btn btn-primary btn-sm" (click)="openAddStudentDialog()">New Student</button>
 
 <div class="table-responsive">
-  <table mat-table [dataSource]="etudiants" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Name Column -->
     <ng-container matColumnDef="nom">
       <th mat-header-cell *matHeaderCellDef> Nom </th>
@@ -76,8 +76,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
   </table>
-  
-</div>
-</div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+ </div>
+
+
+  </div>
 
 <app-sidebar></app-sidebar>

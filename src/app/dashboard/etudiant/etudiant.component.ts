@@ -1,5 +1,5 @@
 // src/app/components/etudiant/etudiant.component.ts
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Etudiant } from 'src/app/model/etudiant';
 import { EtudiantService } from './etudiant.service';
 import { AddStudentComponent } from './add-student/add-student.component';
@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdateStudentComponent } from './update-student/update-student.component';
 import { AuthService } from 'src/app/auth.service';
 import { RegisterAccountComponent } from './register-account/register-account.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 
@@ -16,22 +18,39 @@ import { RegisterAccountComponent } from './register-account/register-account.co
   templateUrl: './etudiant.component.html',
   styleUrls: ['./etudiant.component.css']
 })
-export class EtudiantComponent implements OnInit {
+export class EtudiantComponent implements OnInit , AfterViewInit{
   etudiants: Etudiant[] = [];
   displayedColumns: string[] = ['nom', 'prenom', 'date_naissance', 'numTel', 'email', 'cin', 'niveauScolaire','compte',  'actions'];
   selectedEtudiant: Etudiant | null = null; // Declare selectedEtudiant property here
+  dataSource = new MatTableDataSource<Etudiant>();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private etudiantService: EtudiantService, public dialog: MatDialog, private snackBar: MatSnackBar, private authService: AuthService) { }
+  constructor(private etudiantService: EtudiantService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.etudiantService.getAllEtudiants().subscribe((data: Etudiant[]) => {
-      this.etudiants = data;
-    }, error => {
-      console.error('Error fetching etudiants:', error);
-    });
-    
+    this.fetchEtudiants();
   }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  fetchEtudiants(): void {
+    this.etudiantService.getAllEtudiants().subscribe({
+      next: (data: Etudiant[]) => {
+        this.dataSource.data = data; // Update the dataSource's data property
+      },
+      error: (error) => {
+        console.error('Error fetching etudiants:', error);
+        this.snackBar.open('Failed to fetch students', 'Close', {
+          duration: 2000,
+        });
+      }
+    });
+  }
+
+  
   openAddStudentDialog(): void {
     const dialogRef = this.dialog.open(AddStudentComponent, {
       width: '600px',

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,7 +25,12 @@ export class AuthService {
       // Consider validating token with the server here
     }
   }
-
+  isAdminUser(): boolean {
+    return this.isAuthenticatedUser() && this.compteInfo?.role === 'admin';
+  }
+  isFormateur(): boolean{
+    return this.isAuthenticatedUser() && this.compteInfo?.role === 'formateur';
+  }
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>('http://localhost:3001/api/login', { nomUtilisateur: username, motDePasse: password }).pipe(
       tap(response => {

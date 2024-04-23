@@ -126,6 +126,8 @@ import { UpdateModuleComponent } from './dashboard/module/edit/update-module/upd
     MatPaginatorModule,
     MatSelectModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule
 
   ],
   providers: [

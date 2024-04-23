@@ -13,11 +13,21 @@
             <a class="nav-item nav-link" [routerLink]="['/formation']">Formation</a>
             <a class="nav-item nav-link" [routerLink]="['/team']">Our Team</a>
             <a class="nav-item nav-link" [routerLink]="['/contact']">Contact</a>
-            <a class="nav-item nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="nav-item nav-link" *ngIf="_authService.isAdminUser()" [routerLink]="['/dashboard']">Dashboard</a>
             <a class="nav-item nav-link" [routerLink]="['/categorie']">Categorie</a>
             <a class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"*ngIf="!_authService.isAuthenticatedUser()" [routerLink]="['/login']">Login<i class="fa fa-arrow-right ms-3"></i></a>
-            <a class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" *ngIf="_authService.isAuthenticatedUser()" (click)="_authService.logout()">Logout <i class="fa fa-arrow-right ms-3"></i></a>
-
+            <div class="nav-item dropdown" *ngIf="_authService.isAuthenticatedUser()">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Logged in as {{ _authService.getCompteInfo()?.nomUtilisateur }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" [routerLink]="['/profile']">Profile</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/settings']">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" (click)="_authService.logout()">Logout</a></li>
+                </ul>
+            </div>
+            
         </div>
     </div>
 </nav>

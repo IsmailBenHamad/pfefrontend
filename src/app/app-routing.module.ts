@@ -31,18 +31,18 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'testimonial', component: TestimonialComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'login', component:LoginComponent},
-  { path: 'compte', component:CompteComponent}, 
-   { path: 'modules', component: ModulesComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'compte', component: CompteComponent },
+  { path: 'modules', component: ModulesComponent },
   { path: 'formation', component: FormationComponent },
   { path: 'dashboard', component: DashboardComponent },
-  {path: 'etudiant', component:EtudiantComponent},
-  {path:'formateur', component:FormateurComponent},
-  {path:'listeformation', component:ListeFormationComponent},
-  {path:'categorie', component:CategorieComponent},
-  {path:'listecategorie', component:ListeCategorieComponent},
-  {path:'emploi', component:EmploiComponent},
-  {path:'module', component:ModuleComponent}
+  { path: 'etudiant', component: EtudiantComponent },
+  { path: 'formateur', component: FormateurComponent },
+  { path: 'listeformation', component: ListeFormationComponent },
+  { path: 'categorie', component: CategorieComponent },
+  { path: 'listecategorie', component: ListeCategorieComponent },
+  { path: 'emploi', component: EmploiComponent },
+  { path: 'module', component: ModuleComponent }
 
 
 ];
