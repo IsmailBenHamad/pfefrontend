@@ -1,0 +1,67 @@
+<!-- compte.component.html -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container mt-4">
+  <!-- Profil Étudiant -->
+  <div *ngIf="etud" class="card mb-3">
+    <div class="card-header bg-primary text-white">
+      Profil de l'Étudiant
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ etud.prenom }} {{ etud.nom }}</h5>
+      <p class="card-text">Plus d'infos ici...</p>
+    </div>
+  </div>
+  <div *ngIf="enseig" class="card mb-3">
+    <div class="card-header bg-primary text-white">
+      Profil de l'enseignant
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ enseig.prenom }} {{ enseig.nom }}</h5>
+      <p class="card-text">Plus d'infos ici...</p>
+    </div>
+  </div>
+
+  <!-- Informations du Compte -->
+  <div *ngIf="compte" class="card mb-3">
+    <div class="card-header bg-success text-white">
+      Informations du Compte
+    </div>
+    <div class="card-body">
+      <p>Nom d'utilisateur: {{ compte.nomUtilisateur }}</p>
+      <p>Rôle: {{ compte.role }}</p>
+      <p>Statut: {{ compte.estActive ? 'Actif' : 'Inactif' }}</p>
+    </div>
+  </div>
+
+ <!-- Modules et Formations -->
+<div *ngIf="modules && modules.length > 0">
+  <div class="card mb-3">
+    <div class="card-header bg-info text-white">
+      Modules
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let module of modules" class="list-group-item">
+        <h5 class="mb-1">{{ module.nomModule }}</h5>
+        <p>Enseignant: {{ module.enseignant.nom }} {{ module.enseignant.prenom }}</p>
+        <p>Email: {{ module.enseignant.email }}</p>
+        <!-- Détails de la formation -->
+        <div class="mt-2">
+          <strong>Formation:</strong>
+          <p>Nom: {{ module.formations.nomformation }}</p>
+          <p>Durée: {{ module.formations.duree }}</p>
+          <p>Description: {{ module.formations.description }}</p>
+          <p>Prix: {{ module.formations.prix }}</p>
+          <p>Niveau: {{ module.formations.niveau }}</p>
+        </div>
+        <p>Emploi: <a (click)="module.emploi._id && fetchEmploiDetails(module.emploi._id, module._id)"
+            class="text-decoration-none">
+            {{ module.emploi?.nom }}
+          </a>
+        </p>
+        <p></p>
+      </li>
+    </ul>
+  </div>
+</div>
+
